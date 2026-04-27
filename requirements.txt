@@ -1,0 +1,27 @@
+# Core
+torch
+torchvision
+
+# Diffusion
+diffusers
+transformers
+accelerate
+huggingface-hub
+
+# Detection
+ultralytics
+
+# Face analysis
+deepface
+
+# Image processing
+opencv-python
+Pillow
+numpy
+
+# Evaluation
+lpips
+scipy
+pandas
+matplotlib
+tqdm

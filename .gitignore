@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+.env/
+env/
+
+# YOLO weights
+*.pt
+
+# Input / output data
+input_images/
+output/
+
+# Evaluation data
+COCO/
+
+# Temporary files
+tmp_arcface.jpg
+
+# Evaluation results
+*.csv
+quality_assessment_sample.png
+arcface_similarity_sample.png
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
