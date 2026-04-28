@@ -2,13 +2,13 @@
 
 [![Paper](https://img.shields.io/badge/Paper-ICPR%202026-blue)](#)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
 
 > Accepted at **ICPR 2026**. A production-ready face anonymization pipeline combining visibility-aware filtering with diffusion-based inpainting, designed for real-world scenarios with multiple people, extreme scale variations, occlusions, and diverse conditions.
 
 ---
 
-## Why This Work?
+## Why this work?
 
 State-of-the-art anonymization methods are optimized for curated datasets: pre-cropped, aligned, single faces under controlled conditions. They process every detected face indiscriminately, wasting computation on low-confidence detections and producing artifacts on barely-visible faces.
 
@@ -20,7 +20,7 @@ We address this with two key ideas:
 
 ## Results
 
-### Adjustable Anonymization Strength (0.3 → 0.9)
+### Adjustable anonymization strength (0.3 → 0.9)
 
 ![Strength levels](images/strength_levels.png)
 
@@ -28,7 +28,7 @@ We address this with two key ideas:
 
 ---
 
-### Real-World Generalization
+### Real-world generalization
 
 ![Qualitative comparison](images/qualitative_comparison.png)
 
@@ -36,7 +36,7 @@ We address this with two key ideas:
 
 ---
 
-### Full-Body Anonymization
+### Full-body anonymization
 
 ![Full body](images/fullbody.png)
 
@@ -44,7 +44,7 @@ We address this with two key ideas:
 
 ---
 
-### Text-Guided Attribute Control
+### Text-guided attribute control
 
 ![Attribute control](images/attribute_control.png)
 
@@ -52,7 +52,7 @@ We address this with two key ideas:
 
 ---
 
-## Key Results
+## Key results
 
 Utility preservation on real-world COCO scenes: the primary deployment target:
 
@@ -73,12 +73,12 @@ Utility preservation on real-world COCO scenes: the primary deployment target:
 2. **Face detection + visibility scoring**: DeepFace (RetinaFace backend) + YOLO-pose (5 facial keypoints)
 3. **Filtering**: faces with score ≤ 0.40 are skipped
 4. **Adaptive mask generation**: segmentation-based with multi-tier elliptical fallback
-5. **Inpainting**: Stable Diffusion XL with ControlNet (OpenPose + Canny)
+5. **Inpainting**: Stable Diffusion XL inpainting on expanded head crops
 6. **Compositing**: soft alpha blending back onto the original image
 
 ---
 
-## Repository Structure
+## Repository structure
 
 ```
 ├── src/
@@ -153,7 +153,7 @@ The pipeline processes all images in `INPUT_FOLDER` and writes results to `OUTPU
 
 ---
 
-## Configuration Guide
+## Configuration guide
 
 All parameters are centralized in `src/config.py`:
 
@@ -182,11 +182,11 @@ Three evaluation scripts are provided in `eval/`, reproducing the paper's quanti
 - `similarity_test.py`: ArcFace cosine similarity (identity removal strength)
 - `utility_test.py`: detection rates, gender accuracy, age MAE (downstream utility)
 
-Each script compares our method against DeepPrivacy2 and FAMS on COCO images.
+Each script compares our method against DeepPrivacy2 and FAMS (see the paper for full details) on COCO images.
 
 ---
 
-## Model-Agnostic Design
+## Model-agnostic design
 
 Computational efficiency scales with the chosen backbone. The pipeline imposes no constraint on which inpainting model is used. Lighter alternatives such as SDXL-Turbo or distilled variants can be substituted in `pipeline.py` without any other changes.
 
@@ -196,10 +196,11 @@ Computational efficiency scales with the chosen backbone. The pipeline imposes n
 
 ```bibtex
 @inproceedings{lahgazi2026visaware,
-  title     = {Visibility-Aware Diffusion-Based Face Anonymization for Real-World Deployment},
-  author    = {Lahgazi, MJ and Tarel, Jean-Philippe},
-  booktitle = {Proceedings of the International Conference on Pattern Recognition (ICPR 2026)},
-  year      = {2026}
+  title        = {Visibility-Aware Diffusion-Based Face Anonymization for Real-World Deployment},
+  author       = {Lahgazi, Mohamed Jaouad and Tarel, Jean-Philippe},
+  booktitle    = {International Conference on Pattern Recognition (ICPR)},
+  year         = {2026},
+  organization = {Springer}
 }
 ```
 
