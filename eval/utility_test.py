@@ -9,10 +9,10 @@ from deepface import DeepFace
 from tqdm import tqdm
 from ultralytics import YOLO
 
-ORIGINAL_DIR     = "images/COCO"
-DEEPPRIVACY2_DIR = "deepprivacy2/COCO"
-FAMS_DIR         = "FAMS/face_anon_simple/anonymized_output/COCO"
-OURS_DIR         = "ours/COCO"
+ORIGINAL_DIR     = "COCO/input"
+DEEPPRIVACY2_DIR = "COCO/dp2"
+FAMS_DIR         = "COCO/fams"
+OURS_DIR         = "COCO/ours"
 
 METHODS     = ["DeepPrivacy2", "FAMS", "Ours"]
 DIRECTORIES = [ORIGINAL_DIR, DEEPPRIVACY2_DIR, FAMS_DIR, OURS_DIR]
