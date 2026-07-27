@@ -26,6 +26,7 @@ from masking import determine_cutoff_y, extract_head_mask, get_person_segmentati
 from utils import get_image_files
 from visibility import compute_visibility_score, detect_face, detect_keypoints
 
+
 PersonResult = namedtuple("PersonResult", ["person_id", "bbox", "head_mask", "visibility_score"])
 
 
@@ -43,11 +44,12 @@ def _process_person(image, bbox, person_id, model_pose, model_seg) -> PersonResu
 
 def _detect_all_persons(image, model_person, model_pose, model_seg) -> List[PersonResult]:
     results = model_person(image, conf=PERSON_DETECTION_CONF, iou=0.5, verbose=False, device=DEVICE)
-    persons, person_id = [], 1
 
+    persons, person_id = [], 1
     for result in results:
         if result.boxes is None:
             continue
+
         for j, box in enumerate(result.boxes.xyxy.cpu().numpy()):
             if result.boxes.cls[j].item() != 0:
                 continue
@@ -92,11 +94,13 @@ def main():
     model_person = YOLO("yolo11n.pt")
     model_seg    = YOLO("yolo11n-seg.pt")
     model_pose   = YOLO("yolo11n-pose.pt")
-    sdxl_pipe    = StableDiffusionXLInpaintPipeline.from_pretrained(
+
+    torch_dtype = torch.float16 if DEVICE == "cuda" else torch.float32
+    sdxl_pipe   = StableDiffusionXLInpaintPipeline.from_pretrained(
         "diffusers/stable-diffusion-xl-1.0-inpainting-0.1",
-        torch_dtype=torch.float16,
-        variant="fp16",
-    ).to("cuda")
+        torch_dtype=torch_dtype,
+        variant="fp16" if DEVICE == "cuda" else None,
+    ).to(DEVICE)
     print("Models loaded.\n")
 
     batch_process(INPUT_FOLDER, OUTPUT_FOLDER, model_person, model_pose, model_seg, sdxl_pipe)
