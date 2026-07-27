@@ -184,7 +184,7 @@ Three evaluation scripts are provided in `eval/`, reproducing the paper's quanti
 
 Each script compares our method against DeepPrivacy2 and FAMS (see the paper for full details) on COCO images. 
 
-Reproducing Tables 2, 3, and 4: the exact input samples, sample manifests, and generated outputs (ours, DeepPrivacy2, FAMS) used to produce these tables are available at huggingface.co/datasets/med-jaouad/vis-aware-anonymization-eval.
+Reproducing Tables 2, 3, and 4: the exact input samples, sample manifests, and generated outputs (ours, DeepPrivacy2, FAMS) used to produce these tables are available at [huggingface.co/datasets/med-jaouad/vis-aware-anonymization-eval](https://huggingface.co/datasets/med-jaouad/vis-aware-anonymization-eval).
 
 ---
 
