@@ -13,6 +13,7 @@ ultralytics
 
 # Face analysis
 deepface
+tf-keras
 
 # Image processing
 opencv-python
