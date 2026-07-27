@@ -182,9 +182,10 @@ Three evaluation scripts are provided in `eval/`, reproducing the paper's quanti
 - `similarity_test.py`: ArcFace cosine similarity (identity removal strength)
 - `utility_test.py`: detection rates, gender accuracy, age MAE (downstream utility)
 
-Each script compares our method against DeepPrivacy2 and FAMS (see the paper for full details) on COCO images.
+Each script compares our method against DeepPrivacy2 and FAMS (see the paper for full details) on COCO images. 
 
 Reproducing Tables 2, 3, and 4: the exact input samples, sample manifests, and generated outputs (ours, DeepPrivacy2, FAMS) used to produce these tables are available at huggingface.co/datasets/med-jaouad/vis-aware-anonymization-eval.
+
 ---
 
 ## Model-agnostic design
